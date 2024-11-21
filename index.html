@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Diagnóstico del Embudo de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            background-color: #e9f7e9;
+            padding: 15px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .cta-button {
+            display: block;
+            text-align: center;
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .cta-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador de Diagnóstico del Embudo de Ventas</h1>
+        <p>Completa los campos para evaluar el estado actual de tu embudo de ventas.</p>
+        <form id="funnelForm">
+            <label for="visitors">Número de visitantes mensuales:</label>
+            <input type="number" id="visitors" placeholder="Ejemplo: 1000" required>
+            
+            <label for="leads">Número de leads generados al mes:</label>
+            <input type="number" id="leads" placeholder="Ejemplo: 200" required>
+            
+            <label for="conversions">Número de conversiones mensuales:</label>
+            <input type="number" id="conversions" placeholder="Ejemplo: 20" required>
+            
+            <button type="button" onclick="diagnoseFunnel()">Diagnosticar</button>
+        </form>
+        
+        <div id="result" class="result" style="display: none;">
+            <h2>Diagnóstico del Embudo</h2>
+            <p id="diagnosisText"></p>
+        </div>
+
+        <a href="https://klicana.work/tdivKK" class="cta-button" target="_blank">ACCEDE A LUCRACHAT IA</a>
+    </div>
+    
+    <script>
+        function diagnoseFunnel() {
+            const visitors = parseInt(document.getElementById("visitors").value);
+            const leads = parseInt(document.getElementById("leads").value);
+            const conversions = parseInt(document.getElementById("conversions").value);
+            
+            const leadRate = ((leads / visitors) * 100).toFixed(2);
+            const conversionRate = ((conversions / leads) * 100).toFixed(2);
+            
+            let diagnosis = `
+                <strong>Tasa de generación de leads:</strong> ${leadRate}%<br>
+                <strong>Tasa de conversión:</strong> ${conversionRate}%<br><br>
+                <strong>Recomendación:</strong> Optimiza tu embudo enfocándote en:
+                <ul>
+                    <li>Mejorar la atracción de tráfico para incrementar visitantes.</li>
+                    <li>Personalizar interacciones con herramientas de IA para aumentar conversiones.</li>
+                    <li>Reducir puntos de fuga en formularios o carritos.</li>
+                </ul>
+            `;
+            
+            document.getElementById("diagnosisText").innerHTML = diagnosis;
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>
